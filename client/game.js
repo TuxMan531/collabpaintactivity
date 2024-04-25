@@ -7,3 +7,6 @@ const ctx = canvas.getContext("2d");
 
 ctx.fillStyle="green"
 ctx.fillRect(0, 0, 100, 100)
+
+ctx.strokeStyle="red"
+ctx.strokeRect(1, 1, size-2, size-2)
