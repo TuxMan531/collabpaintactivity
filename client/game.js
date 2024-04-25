@@ -44,13 +44,21 @@ function drawGrid() {
     drawPlayer();
 }
 
+let playerColor = getRandomHexColor(); // Random color for the player, initialized on page load
+
 // Function to draw the player
+
 function drawPlayer() {
     const radius = gridSize / 4; // Radius of the player dot
-    ctx.fillStyle = "blue"; // Dot color for the player
+    ctx.fillStyle = playerColor; // Use the pre-determined random color
+
     ctx.beginPath();
     ctx.arc(playerX * gridSize + gridSize / 2, playerY * gridSize + gridSize / 2, radius, 0, Math.PI * 2);
     ctx.fill();
+}
+
+function getRandomHexColor() {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 }
 
 // Initial setup
