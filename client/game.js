@@ -57,6 +57,20 @@ function drawPlayer() {
 adjustCanvas();
 window.addEventListener('resize', adjustCanvas); // Adjust the canvas size when the window is resized
 
+// Global variable for selected color
+let colorgrid = 'white';  // Default color
+
+// Color changing buttons
+document.getElementById('color-red').addEventListener('click', function() {
+    colorgrid = 'red';
+});
+document.getElementById('color-green').addEventListener('click', function() {
+    colorgrid = 'green';
+});
+document.getElementById('color-blue').addEventListener('click', function() {
+    colorgrid = 'blue';
+});
+
 // Event listener for keyboard controls
 document.addEventListener("keydown", function(event) {
     let moved = false;
@@ -73,7 +87,7 @@ document.addEventListener("keydown", function(event) {
         playerY += 1;
         moved = true;
     } else if (event.key === "a" || event.key === "A") { // Listen for the 'A' key to color the current cell
-        gridColors[playerY][playerX] = 'red'; // Change the color at the player's position
+        gridColors[playerY][playerX] = colorgrid ; // Change the color at the player's position
         moved = true;
     }
     else if (event.key === "s" || event.key === "S") { // Listen for the 'S' key to color the current cell
