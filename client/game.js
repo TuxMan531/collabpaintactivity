@@ -5,8 +5,57 @@ canvas.height = size;
 document.body.append(canvas);
 const ctx = canvas.getContext("2d");
 
-ctx.fillStyle="green"
-ctx.fillRect(0, 0, 100, 100)
+const readline = require('readline');
 
-ctx.strokeStyle="red"
-ctx.strokeRect(1, 1, size-2, size-2)
+// Grid dimensions
+const gridRowCount = 10;
+const gridColumnCount = 10;
+
+// Player starting position
+let playerPosition = { x: 0, y: 0 };
+
+// Initialize readline interface
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
+
+// Function to draw the grid
+function drawGrid() {
+    console.clear();
+    for (let y = 0; y < gridRowCount; y++) {
+        let row = '';
+        for (let x = 0; x < gridColumnCount; x++) {
+            if (x === playerPosition.x && y === playerPosition.y) {
+                row += 'P '; // Player's current position
+            } else {
+                row += '. '; // Empty space
+            }
+        }
+        console.log(row);
+    }
+}
+
+// Event listener for keypress
+process.stdin.on('keypress', (str, key) => {
+    if (key.ctrl && key.name === 'c') {
+        process.exit(); // Exit program
+    } else {
+        switch (key.name) {
+            case 'up':
+                playerPosition.y = Math.max(playerPosition.y - 1, 0);
+                break;
+            case 'down':
+                playerPosition.y = Math.min(playerPosition.y + 1, gridRowCount - 1);
+                break;
+            case 'left':
+                playerPosition.x = Math.max(playerPosition.x - 1, 0);
+                break;
+            case 'right':
+                playerPosition.x = Math.min(playerPosition.x + 1, gridColumnCount - 1);
+                break;
+        }
+        drawGrid();
+    }
+});
+
+// Initial drawing of the grid
+drawGrid();
