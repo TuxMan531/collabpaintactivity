@@ -2,6 +2,10 @@ const canvas = document.createElement("canvas");
 document.body.append(canvas);
 const ctx = canvas.getContext("2d");
 
+export function initializeGame() {
+    // function body
+  }
+
 const numCells = 20; // Fixed number of cells in both width and height
 let gridSize; // Size of each cell, to be determined based on canvas size
 let canvasSize; // Total canvas size
@@ -70,6 +74,10 @@ document.addEventListener("keydown", function(event) {
         moved = true;
     } else if (event.key === "a" || event.key === "A") { // Listen for the 'A' key to color the current cell
         gridColors[playerY][playerX] = 'red'; // Change the color at the player's position
+        moved = true;
+    }
+    else if (event.key === "s" || event.key === "S") { // Listen for the 'S' key to color the current cell
+        gridColors[playerY][playerX] = 'white'; // Change the color at the player's position
         moved = true;
     }
 

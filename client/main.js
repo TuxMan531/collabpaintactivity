@@ -1,8 +1,8 @@
 // Import the SDK and game script
 import { DiscordSDK } from "@discord/embedded-app-sdk";
 
-import "./style.css";
-import rocketLogo from '/rocket.png';
+// import "./style.css";
+// import rocketLogo from '/rocket.png';
 import { initializeGame } from './game.js';  // Assuming there's an initialize function you can call
 
 // Instantiate the SDK
