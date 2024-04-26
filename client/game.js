@@ -6,7 +6,7 @@ export function initializeGame() {
     // function body
   }
 
-const numCells = 20; // Fixed number of cells in both width and height
+const numCells = 50; // Fixed number of cells in both width and height
 let gridSize; // Size of each cell, to be determined based on canvas size
 let canvasSize; // Total canvas size
 
